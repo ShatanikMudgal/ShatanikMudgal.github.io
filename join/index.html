@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Join my Stickathlon room</title>
+<meta property="og:title" content="You've been challenged on Stickathlon! 🏃‍♂️🏹⛵">
+<meta property="og:description" content="Tap to join my room and race me in 10 silly ragdoll sports.">
+<meta property="og:image" content="https://shatanikmudgal.github.io/banner.png">
+<link rel="icon" href="../icon.png">
+<style>
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1d2e;color:#eef3f8;text-align:center}
+main{max-width:520px;margin:auto;padding:28px 20px}
+img.icon{width:120px;border-radius:28px;border:5px solid #14243a;box-shadow:0 8px 0 #0a1420}
+h1{font-size:2rem;margin:.6em 0 .2em}p{color:#b9c7d6;line-height:1.5}
+.code{display:inline-block;font:800 2.2rem/1 system-ui;letter-spacing:.2em;background:#fff;color:#0f1d2e;padding:12px 20px;border-radius:14px;margin:8px 0 4px}
+a.btn{display:block;margin:14px auto;max-width:340px;padding:16px 22px;background:#ffcc33;color:#0f1d2e;font-weight:800;font-size:1.15rem;border-radius:999px;text-decoration:none}
+a.ghost{background:transparent;color:#ffcc33;border:3px solid #ffcc33}
+small{color:#8ea3b8}
+</style></head><body><main>
+<img class="icon" src="../icon.png" alt="Stickathlon">
+<h1>You've been challenged! ⚔️</h1>
+<p>Your friend is waiting in a Stickathlon room. Join and race them in sprints, jumps, throws, archery and sailing.</p>
+<div class="code" id="code">—</div><br><small>Room code</small>
+<a class="btn" id="open" href="#">Open in Stickathlon</a>
+<a class="btn ghost" id="get" href="https://play.google.com/store/apps/details?id=com.stickathlon.game">Get Stickathlon on Google Play</a>
+<p><small>Don't have the game yet? Install it, then open it and go to <b>Play → Join room</b> and type the code above.</small></p>
+</main>
+<script>
+(function(){
+  var m=/[?&]c=([A-Za-z0-9]{5})/.exec(location.search),code=m?m[1].toUpperCase():'';
+  var PLAY='https://play.google.com/store/apps/details?id=com.stickathlon.game';
+  document.getElementById('code').textContent=code||'—';
+  var open=document.getElementById('open');
+  var android=/Android/i.test(navigator.userAgent);
+  if(!code){open.style.display='none';return}
+  open.href=android?'intent://join/'+code+'#Intent;scheme=stickathlon;package=com.stickathlon.game;S.browser_fallback_url='+encodeURIComponent(PLAY)+';end':'stickathlon://join/'+code;
+  if(android){setTimeout(function(){location.href=open.href},300)}
+})();
+</script>
+</body></html>
